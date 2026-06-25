@@ -10,7 +10,16 @@
     <meta name="apple-mobile-web-app-title" content="恋爱空间" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 <!-- Using system fonts to avoid Google Fonts loading issues in China -->
-    <title>恋爱空间 - 属于我们的二人世界</title>
+    <title>恋爱外卖 - 甜蜜下单</title>
+    <script>
+      (function(){
+        var path = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (path && path !== location.href) {
+          history.replaceState(null, null, path);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
