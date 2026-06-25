@@ -67,10 +67,10 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Main · 左侧栏 + 右侧列表 */}
-      <div className="flex flex-1 min-h-0 overflow-hidden relative">
+      {/* Main · 绝对定位布局 */}
+      <div className="flex-1 relative overflow-hidden" style={{ minHeight: 0 }}>
         {/* LEFT · 分类侧栏 */}
-        <div className="flex-shrink-0 w-[80px] overflow-y-auto panel-glass" style={{ scrollbarWidth: 'none' }}>
+        <div className="absolute top-0 left-0 bottom-0 w-[80px] overflow-y-auto panel-glass z-10" style={{ scrollbarWidth: 'none' }}>
           {MENU_CATEGORIES.map(cat => {
             const isActive = activeCat === cat.id
             return (
@@ -94,83 +94,80 @@ export default function HomePage() {
           })}
         </div>
 
-        {/* RIGHT · 商品列表 */}
-        <div className="flex-1 min-w-0 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.12) transparent', WebkitOverflowScrolling: 'touch' }}>
-          {category && (
-            <div className="sticky top-0 z-10 px-5 py-3.5 flex items-center gap-3 panel-glass" style={{ borderBottom: '0.5px solid rgba(0,0,0,0.04)' }}>
-              <span className="text-xl">{category.emoji}</span>
-              <span className="crystal-text-sm text-[17px]" style={{ color: 'var(--ink)' }}>{category.name}</span>
-              <span className="text-[13px] text-[var(--ink-muted)] ml-auto font-medium">{items.length} 项</span>
-            </div>
-          )}
-          <div className="px-4 py-4 space-y-3" style={{ paddingBottom: '130px' }}>
-            {items.map(item => (
-              <div key={item.id} className="food-card p-4">
-                <div className="flex items-center gap-4 relative z-[2]">
-                  {/* Emoji icon */}
-                  <div className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(251,240,242,0.7))',
-                      boxShadow: '0 2px 10px rgba(200,150,160,0.1), inset 0 1px 0 rgba(255,255,255,0.6)',
-                    }}>
-                    {item.emoji}
-                  </div>
-                  {/* Info */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-bold text-[16px] text-[var(--ink)] line-clamp-1 break-word tracking-tight">{item.name}</span>
-                      {item.tag && (
-                        <span className="flex-shrink-0 px-2 py-[3px] rounded-full text-[10px] font-bold tracking-wide"
-                          style={{ background: 'linear-gradient(135deg, rgba(232,145,158,0.12), rgba(245,197,206,0.08))', color: 'var(--rose)' }}>
-                          {item.tag}
-                        </span>
-                      )}
+        {/* RIGHT · 商品列表 + 购物车按钮 */}
+        <div className="absolute top-0 left-[80px] bottom-0 right-0">
+          {/* 可滚动商品区域 */}
+          <div className="h-full overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.12) transparent', WebkitOverflowScrolling: 'touch' }}>
+            {category && (
+              <div className="sticky top-0 z-10 px-5 py-3.5 flex items-center gap-3 panel-glass" style={{ borderBottom: '0.5px solid rgba(0,0,0,0.04)' }}>
+                <span className="text-xl">{category.emoji}</span>
+                <span className="crystal-text-sm text-[17px]" style={{ color: 'var(--ink)' }}>{category.name}</span>
+                <span className="text-[13px] text-[var(--ink-muted)] ml-auto font-medium">{items.length} 项</span>
+              </div>
+            )}
+            <div className="px-4 py-4 space-y-3" style={{ paddingBottom: '100px' }}>
+              {items.map(item => (
+                <div key={item.id} className="food-card p-4">
+                  <div className="flex items-center gap-4 relative z-[2]">
+                    <div className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(251,240,242,0.7))', boxShadow: '0 2px 10px rgba(200,150,160,0.1), inset 0 1px 0 rgba(255,255,255,0.6)' }}>
+                      {item.emoji}
                     </div>
-                    <p className="text-[13px] text-[var(--ink-soft)] line-clamp-2 break-word leading-relaxed mb-2.5">{item.desc}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[15px] font-extrabold tracking-tight" style={{ color: 'var(--rose)' }}>
-                        {item.price} <span className="text-[11px] font-semibold text-[var(--ink-muted)]">爱点</span>
-                      </span>
-                      <motion.button whileTap={{ scale: 0.88 }}
-                        onClick={() => addToCart(item)}
-                        className="w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 3px 14px rgba(232,145,158,0.35)' }}>
-                        <Plus size={18} style={{ color: '#fff' }} strokeWidth={2.5} />
-                      </motion.button>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-bold text-[16px] text-[var(--ink)] line-clamp-1 break-word tracking-tight">{item.name}</span>
+                        {item.tag && (
+                          <span className="flex-shrink-0 px-2 py-[3px] rounded-full text-[10px] font-bold tracking-wide"
+                            style={{ background: 'linear-gradient(135deg, rgba(232,145,158,0.12), rgba(245,197,206,0.08))', color: 'var(--rose)' }}>{item.tag}</span>
+                        )}
+                      </div>
+                      <p className="text-[13px] text-[var(--ink-soft)] line-clamp-2 break-word leading-relaxed mb-2.5">{item.desc}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[15px] font-extrabold tracking-tight" style={{ color: 'var(--rose)' }}>
+                          {item.price} <span className="text-[11px] font-semibold text-[var(--ink-muted)]">爱点</span>
+                        </span>
+                        <motion.button whileTap={{ scale: 0.88 }}
+                          onClick={() => addToCart(item)}
+                          className="w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer flex-shrink-0"
+                          style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 3px 14px rgba(232,145,158,0.35)' }}>
+                          <Plus size={18} style={{ color: '#fff' }} strokeWidth={2.5} />
+                        </motion.button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-            {items.length === 0 && (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <span className="text-5xl mb-5 opacity-25">📭</span>
-                <p className="text-[15px] text-[var(--ink-soft)] font-medium">该分类暂无商品</p>
-              </div>
-            )}
+              ))}
+              {items.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-24 text-center">
+                  <span className="text-5xl mb-5 opacity-25">📭</span>
+                  <p className="text-[15px] text-[var(--ink-soft)] font-medium">该分类暂无商品</p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Cart FAB */}
-        {cartCount > 0 && (
+          {/* ★ 常驻购物车按钮 — 始终可见 */}
           <motion.button
-            initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}
-            whileTap={{ scale: 0.9 }} onClick={() => setCartOpen(true)}
-            className="absolute bottom-5 right-5 z-20 w-[56px] h-[56px] rounded-[18px] flex items-center justify-center cursor-pointer overflow-hidden"
+            whileTap={{ scale: 0.92 }}
+            onClick={() => setCartOpen(true)}
+            className="absolute bottom-5 right-5 z-20 flex items-center gap-2.5 px-4 h-[52px] rounded-[18px] cursor-pointer overflow-hidden"
             style={{
               background: 'rgba(255,255,255,0.6)',
               backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
               border: '0.5px solid rgba(255,255,255,0.7)',
               boxShadow: '0 4px 24px rgba(200,150,160,0.18), inset 0 1px 0 rgba(255,255,255,0.5)',
             }}>
-            <div className="absolute inset-0 opacity-20" style={{ background: 'linear-gradient(135deg, #E8919E, #F5C5CE)' }} />
-            <ShoppingBag size={24} style={{ color: 'var(--rose)', position: 'relative', zIndex: 1 }} strokeWidth={1.5} />
-            <span className="absolute -top-1 -right-1 min-w-[24px] h-[24px] rounded-full flex items-center justify-center text-white text-[11px] font-bold z-10"
-              style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 2px 8px rgba(212,120,136,0.4)', padding: '0 5px' }}>
-              {cartCount > 99 ? '99+' : cartCount}
-            </span>
+            <div className="absolute inset-0 opacity-15" style={{ background: 'linear-gradient(135deg, #E8919E, #F5C5CE)' }} />
+            <ShoppingBag size={20} style={{ color: 'var(--rose)', position: 'relative', zIndex: 1 }} strokeWidth={1.5} />
+            <span className="relative z-10 text-[14px] font-bold" style={{ color: 'var(--ink-soft)' }}>购物车</span>
+            {cartCount > 0 && (
+              <span className="relative z-10 min-w-[24px] h-[24px] rounded-full flex items-center justify-center text-white text-[11px] font-bold px-[6px]"
+                style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 2px 6px rgba(212,120,136,0.4)' }}>
+                {cartCount > 99 ? '99+' : cartCount}
+              </span>
+            )}
           </motion.button>
-        )}
+        </div>
       </div>
 
       {/* Cart Sheet */}
