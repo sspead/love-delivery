@@ -15,7 +15,7 @@ export function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-30 safe-top bg-white border-b border-[#FFF0F4]">
+    <header className="z-30 safe-top bg-white/80 backdrop-blur-xl border-b border-black/[0.03]">
       <div className="flex items-center justify-center h-12 px-4 max-w-lg mx-auto relative">
         {/* 居中：恋爱外卖标题 */}
         <h1

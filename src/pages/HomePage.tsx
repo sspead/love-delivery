@@ -96,7 +96,12 @@ export default function HomePage() {
               <motion.button
                 key={cat.id} whileTap={{ scale: 0.94 }} onClick={() => setActiveCat(cat.id)}
                 className="flex flex-col items-center justify-center gap-1.5 py-3.5 px-1 w-full cursor-pointer relative"
-                style={{ background: isActive ? 'linear-gradient(180deg, rgba(232,145,158,0.1) 0%, rgba(245,197,206,0.05) 100%)' : 'transparent', minHeight: 68 }}
+                style={{
+                  background: isActive
+                    ? 'linear-gradient(180deg, rgba(232,145,158,0.2) 0%, rgba(245,197,206,0.1) 100%)'
+                    : 'linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,250,251,0.3) 100%)',
+                  borderBottom: '0.5px solid rgba(200,170,180,0.12)',
+                  minHeight: 68 }}
               >
                 {isActive && (
                   <motion.div layoutId="activeBar" className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full"
@@ -114,11 +119,16 @@ export default function HomePage() {
         </div>
 
         {/* RIGHT · 商品列表 + 购物车按钮 */}
-        <div className="absolute top-0 left-[80px] bottom-0 right-0">
+        <div className="absolute top-0 left-[80px] bottom-0 right-0" style={{ background: 'rgba(255,250,251,0.3)' }}>
           {/* 可滚动商品区域 */}
-          <div className="h-full overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.12) transparent', WebkitOverflowScrolling: 'touch' }}>
+          <div className="h-full overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
             {category && (
-              <div className="sticky top-0 z-10 px-5 py-3.5 flex items-center gap-3 panel-glass" style={{ borderBottom: '0.5px solid rgba(0,0,0,0.04)' }}>
+              <div className="sticky top-0 z-10 px-5 py-3.5 flex items-center gap-3" style={{
+                background: 'rgba(255,250,251,0.85)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                borderBottom: '1px solid rgba(200,170,180,0.15)',
+              }}>
                 <span className="text-xl">{category.emoji}</span>
                 <span className="crystal-text-sm text-[17px]" style={{ color: 'var(--ink)' }}>{category.name}</span>
                 <span className="text-[13px] text-[var(--ink-muted)] ml-auto font-medium">{items.length} 项</span>
