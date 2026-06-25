@@ -4,7 +4,7 @@
 // ============================================================
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
   Navigate,
@@ -272,9 +272,9 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={auth}>
-      <BrowserRouter>
+      <HashRouter>
         <AppRouter />
-      </BrowserRouter>
+      </HashRouter>
     </AuthContext.Provider>
   )
 }
