@@ -245,47 +245,51 @@ export default function HomePage() {
                 </div>
               ) : (
                 <>
-                  {/* 商品列表 — 绝对定位，可滚动 */}
-                  <div className="absolute top-[80px] bottom-[120px] left-0 right-0 overflow-y-auto px-5 space-y-2.5"
-                    style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.12) transparent', WebkitOverflowScrolling: 'touch' }}>
+                  {/* 商品列表 */}
+                  <div className="absolute top-[80px] bottom-[155px] left-0 right-0 overflow-y-auto px-5 space-y-3"
+                    style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
                     {cart.map(ci => (
-                      <div key={ci.item.id} className="flex items-center gap-3 p-3.5 rounded-2xl"
-                        style={{ background: 'rgba(251,240,242,0.5)', border: '0.5px solid rgba(232,145,158,0.1)' }}>
-                        <span className="text-2xl flex-shrink-0">{ci.item.emoji}</span>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[15px] font-semibold text-[var(--ink)] line-clamp-1 break-word">{ci.item.name}</p>
-                          <p className="text-[13px] mt-0.5" style={{ color: 'var(--rose)' }}>{ci.item.price} 爱点 × {ci.quantity}</p>
-                        </div>
-                        <div className="flex items-center gap-2 flex-shrink-0">
-                          <motion.button whileTap={{ scale: 0.85 }} onClick={() => removeFromCart(ci.item.id)}
-                            className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
-                            style={{ background: 'rgba(232,145,158,0.08)' }}>
-                            <Minus size={14} style={{ color: 'var(--rose)' }} strokeWidth={2.5} />
-                          </motion.button>
-                          <span className="text-[15px] font-semibold text-[var(--ink)] w-5 text-center">{ci.quantity}</span>
-                          <motion.button whileTap={{ scale: 0.85 }} onClick={() => addToCart(ci.item)}
-                            className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
-                            style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)' }}>
-                            <Plus size={14} style={{ color: '#fff' }} strokeWidth={2.5} />
-                          </motion.button>
+                      <div key={ci.item.id} className="food-card p-3.5 !rounded-2xl">
+                        <div className="flex items-center gap-3.5 relative z-[2]">
+                          <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(251,240,242,0.7))', boxShadow: '0 1px 6px rgba(180,140,150,0.1)' }}>
+                            {ci.item.emoji}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[15px] font-bold text-[var(--ink)] line-clamp-1 break-word">{ci.item.name}</p>
+                            <p className="text-[13px] mt-0.5 font-semibold" style={{ color: 'var(--rose)' }}>{ci.item.price} 爱点</p>
+                          </div>
+                          <div className="flex items-center gap-2 flex-shrink-0">
+                            <motion.button whileTap={{ scale: 0.85 }} onClick={() => removeFromCart(ci.item.id)}
+                              className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
+                              style={{ background: 'rgba(232,145,158,0.1)', border: '1px solid rgba(232,145,158,0.15)' }}>
+                              <Minus size={14} style={{ color: 'var(--rose-deep)' }} strokeWidth={2.5} />
+                            </motion.button>
+                            <span className="text-[15px] font-bold text-[var(--ink)] w-6 text-center">{ci.quantity}</span>
+                            <motion.button whileTap={{ scale: 0.85 }} onClick={() => addToCart(ci.item)}
+                              className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
+                              style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 2px 8px rgba(232,145,158,0.3)' }}>
+                              <Plus size={14} style={{ color: '#fff' }} strokeWidth={2.5} />
+                            </motion.button>
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  {/* 底部操作栏 — 固定 */}
-                  <div className="absolute bottom-0 left-0 right-0 px-5 pt-3 pb-4 space-y-3"
-                    style={{ background: 'rgba(255,250,251,0.85)', backdropFilter: 'blur(44px) saturate(200%)', WebkitBackdropFilter: 'blur(44px) saturate(200%)', borderTop: '0.5px solid rgba(0,0,0,0.04)' }}>
+                  {/* 底部操作栏 */}
+                  <div className="absolute bottom-0 left-0 right-0 px-5 pt-4 pb-5 space-y-3.5"
+                    style={{ background: 'rgba(255,250,251,0.9)', backdropFilter: 'blur(40px) saturate(200%)', WebkitBackdropFilter: 'blur(40px) saturate(200%)', borderTop: '1px solid rgba(200,170,180,0.15)' }}>
                     <div className="flex items-center justify-between">
-                      <span className="text-[14px] text-[var(--ink-soft)] font-medium">共 {cartCount} 件商品</span>
-                      <button onClick={() => { setCart([]); addToast('已清空', 'info') }}
-                        className="text-[13px] text-[var(--ink-muted)] cursor-pointer px-2 py-1">清空</button>
+                      <span className="text-[14px] text-[var(--ink-soft)] font-semibold">共 {cartCount} 件商品</span>
+                      <button onClick={() => { setCart([]); addToast('购物车已清空', 'info') }}
+                        className="text-[14px] text-[var(--ink-muted)] cursor-pointer font-medium hover:text-[var(--rose)] transition-colors">清空购物车</button>
                     </div>
                     <motion.button whileTap={{ scale: 0.97 }} onClick={submitOrder}
-                      className="w-full py-3.5 rounded-2xl text-white text-[16px] font-semibold cursor-pointer flex items-center justify-center gap-2 tracking-wide"
-                      style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 4px 24px rgba(232,145,158,0.35)' }}>
-                      提交订单 <span>💝</span>
+                      className="w-full py-4 rounded-2xl text-white text-[17px] font-bold cursor-pointer flex items-center justify-center gap-2 tracking-wider"
+                      style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 6px 28px rgba(232,145,158,0.4)' }}>
+                      <span>提交订单</span><span className="text-xl">💝</span>
                     </motion.button>
-                    <p className="text-center text-[12px] text-[var(--ink-muted)]">爱点是心意，不是钱哦</p>
+                    <p className="text-center text-[12px] text-[var(--ink-muted)]">TA会收到你的甜蜜下单通知 ✨</p>
                   </div>
                 </>
               )}
