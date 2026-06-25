@@ -112,11 +112,11 @@ export default function HomePage() {
           })}
         </div>
 
-        {/* RIGHT: Items */}
-        <div className="flex-1 flex flex-col min-w-0 min-h-0">
-          {/* Category header — 水滴玻璃 */}
+        {/* RIGHT: Items — absolute定位，彻底解决滚动问题 */}
+        <div className="flex-1 relative min-w-0" style={{ background: 'var(--color-bg)' }}>
+          {/* Category header */}
           {category && (
-            <div className="flex-shrink-0 px-4 py-3 flex items-center gap-2.5" style={{
+            <div className="absolute top-0 left-0 right-0 z-10 px-4 py-3 flex items-center gap-2.5" style={{
               background: 'rgba(255,255,255,0.4)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
@@ -128,8 +128,8 @@ export default function HomePage() {
             </div>
           )}
 
-          {/* Item list — 水滴玻璃卡片 */}
-          <div className="flex-1 overflow-y-auto px-3 py-3 space-y-2.5 pb-16"
+          {/* Item list — 绝对定位，永远可滚动到底 */}
+          <div className="absolute top-[49px] bottom-0 left-0 right-0 overflow-y-auto px-3 py-3 space-y-2.5 pb-20"
             style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,123,156,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
             {items.map(item => (
               <div key={item.id} className="food-card p-3">
@@ -140,20 +140,20 @@ export default function HomePage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-semibold text-sm text-[var(--color-text)] line-clamp-1 break-word">{item.name}</span>
+                      <span className="font-bold text-[15px] text-[var(--color-text)] line-clamp-1 break-word">{item.name}</span>
                       {item.tag && (
-                        <span className="flex-shrink-0 px-1.5 py-[1px] rounded-full text-[10px] font-semibold"
-                          style={{ background: 'rgba(255,123,156,0.12)', color: 'var(--color-primary)' }}>{item.tag}</span>
+                        <span className="flex-shrink-0 px-2 py-[2px] rounded-full text-[10px] font-bold"
+                          style={{ background: 'linear-gradient(135deg, rgba(255,123,156,0.15), rgba(255,180,200,0.1))', color: 'var(--color-primary)' }}>{item.tag}</span>
                       )}
                     </div>
-                    <p className="text-xs text-[var(--color-text-muted)] mt-0.5 line-clamp-2 break-word leading-snug">{item.desc}</p>
+                    <p className="text-[13px] text-[var(--color-text-soft)] mt-0.5 line-clamp-2 break-word leading-relaxed">{item.desc}</p>
                     <div className="flex items-center justify-between mt-2">
-                      <span className="text-xs font-bold" style={{ color: 'var(--color-primary)' }}>{item.price} 爱点</span>
+                      <span className="text-sm font-extrabold" style={{ color: 'var(--color-primary)', textShadow: '0 0 8px rgba(255,123,156,0.2)' }}>{item.price} <span className="text-[11px] font-semibold">爱点</span></span>
                       <motion.button whileTap={{ scale: 0.85 }}
                         onClick={() => addToCart(item)}
-                        className="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #FF7B9C, #E8668A)', boxShadow: '0 2px 10px rgba(255,123,156,0.35)' }}>
-                        <Plus size={14} style={{ color: '#fff' }} strokeWidth={3} />
+                        className="w-8 h-8 rounded-xl flex items-center justify-center cursor-pointer flex-shrink-0"
+                        style={{ background: 'linear-gradient(135deg, #FF7B9C, #E8668A)', boxShadow: '0 3px 12px rgba(255,123,156,0.4)' }}>
+                        <Plus size={16} style={{ color: '#fff' }} strokeWidth={3} />
                       </motion.button>
                     </div>
                   </div>
@@ -161,9 +161,9 @@ export default function HomePage() {
               </div>
             ))}
             {items.length === 0 && (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <span className="text-4xl mb-3 opacity-50">📭</span>
-                <p className="text-sm text-[var(--color-text-soft)]">该分类暂无商品</p>
+              <div className="flex flex-col items-center justify-center py-20 text-center">
+                <span className="text-5xl mb-4 opacity-40">📭</span>
+                <p className="text-[15px] text-[var(--color-text-soft)] font-medium">该分类暂无商品</p>
               </div>
             )}
           </div>
