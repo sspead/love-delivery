@@ -165,29 +165,30 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ★ 常驻购物车按钮 — 始终可见 */}
-          <motion.button
-            whileTap={{ scale: 0.92 }}
-            onClick={() => setCartOpen(true)}
-            className="absolute bottom-5 right-5 z-20 flex items-center gap-2.5 px-4 h-[52px] rounded-[18px] cursor-pointer overflow-hidden"
-            style={{
-              background: 'rgba(255,255,255,0.6)',
-              backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
-              border: '0.5px solid rgba(255,255,255,0.7)',
-              boxShadow: '0 4px 24px rgba(200,150,160,0.18), inset 0 1px 0 rgba(255,255,255,0.5)',
-            }}>
-            <div className="absolute inset-0 opacity-15" style={{ background: 'linear-gradient(135deg, #E8919E, #F5C5CE)' }} />
-            <ShoppingBag size={20} style={{ color: 'var(--rose)', position: 'relative', zIndex: 1 }} strokeWidth={1.5} />
-            <span className="relative z-10 text-[14px] font-bold" style={{ color: 'var(--ink-soft)' }}>购物车</span>
-            {cartCount > 0 && (
-              <span className="relative z-10 min-w-[24px] h-[24px] rounded-full flex items-center justify-center text-white text-[11px] font-bold px-[6px]"
-                style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 2px 6px rgba(212,120,136,0.4)' }}>
-                {cartCount > 99 ? '99+' : cartCount}
-              </span>
-            )}
-          </motion.button>
         </div>
       </div>
+
+      {/* ★ 全局购物车按钮 — fixed定位，永远在屏幕底部 */}
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setCartOpen(true)}
+        className="fixed bottom-20 left-4 right-4 z-40 flex items-center justify-center gap-3 h-[52px] rounded-[18px] cursor-pointer overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, #E8919E, #D47888)',
+          boxShadow: '0 6px 28px rgba(232,145,158,0.45)',
+        }}>
+        <ShoppingBag size={20} style={{ color: '#fff' }} strokeWidth={1.5} />
+        <span className="text-[15px] font-bold text-white tracking-wide">购物车</span>
+        {cartCount > 0 && (
+          <span className="min-w-[26px] h-[26px] rounded-full flex items-center justify-center text-white text-[12px] font-bold px-[8px]"
+            style={{ background: 'rgba(255,255,255,0.25)', border: '1px solid rgba(255,255,255,0.4)' }}>
+            {cartCount > 99 ? '99+' : cartCount}
+          </span>
+        )}
+        {cartCount === 0 && (
+          <span className="text-[12px] opacity-70 text-white">(空)</span>
+        )}
+      </motion.button>
 
       {/* Cart Sheet */}
       <AnimatePresence>
@@ -198,42 +199,47 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: '100%' }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-              className="relative z-10 w-full rounded-t-[28px] flex flex-col overflow-hidden safe-bottom"
+              className="relative z-10 w-full rounded-t-[28px] overflow-hidden safe-bottom"
               style={{
-                background: 'rgba(255,250,251,0.8)',
+                background: 'rgba(255,250,251,0.85)',
                 backdropFilter: 'blur(44px) saturate(200%)', WebkitBackdropFilter: 'blur(44px) saturate(200%)',
-                maxHeight: '78dvh',
+                height: '80dvh',
                 boxShadow: '0 -8px 48px rgba(0,0,0,0.08), 0 -1px 0 rgba(255,255,255,0.6)',
               }}>
-              <div className="flex-shrink-0 flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1.5 rounded-full" style={{ background: 'rgba(0,0,0,0.06)' }} />
-              </div>
-              <div className="flex-shrink-0 px-5 pt-2 pb-3 flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <ShoppingBag size={20} style={{ color: 'var(--rose)' }} strokeWidth={1.5} />
-                  <h3 className="crystal-text-sm text-lg" style={{ color: 'var(--ink)' }}>购物车</h3>
-                  <span className="text-sm text-[var(--ink-muted)] font-medium">{cartCount} 件</span>
+              {/* Handle + Header — 固定顶部 */}
+              <div className="absolute top-0 left-0 right-0 z-10" style={{ background: 'rgba(255,250,251,0.85)', backdropFilter: 'blur(44px) saturate(200%)', WebkitBackdropFilter: 'blur(44px) saturate(200%)' }}>
+                <div className="flex justify-center pt-3 pb-1">
+                  <div className="w-10 h-1.5 rounded-full" style={{ background: 'rgba(0,0,0,0.08)' }} />
                 </div>
-                <motion.button whileTap={{ scale: 0.9 }} onClick={() => setCartOpen(false)}
-                  className="p-2 rounded-full cursor-pointer" style={{ background: 'rgba(0,0,0,0.03)' }}>
-                  <X size={18} style={{ color: 'var(--ink-muted)' }} />
-                </motion.button>
+                <div className="px-5 pt-2 pb-3 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <ShoppingBag size={20} style={{ color: 'var(--rose)' }} strokeWidth={1.5} />
+                    <h3 className="crystal-text-sm text-lg" style={{ color: 'var(--ink)' }}>购物车</h3>
+                    <span className="text-sm text-[var(--ink-muted)] font-medium">{cartCount} 件</span>
+                  </div>
+                  <motion.button whileTap={{ scale: 0.9 }} onClick={() => setCartOpen(false)}
+                    className="p-2 rounded-full cursor-pointer" style={{ background: 'rgba(0,0,0,0.03)' }}>
+                    <X size={18} style={{ color: 'var(--ink-muted)' }} />
+                  </motion.button>
+                </div>
               </div>
 
               {cart.length === 0 ? (
-                <div className="flex-1 flex flex-col items-center justify-center py-10 text-center px-5">
+                <div className="absolute top-[80px] bottom-0 left-0 right-0 flex flex-col items-center justify-center text-center px-5">
                   <span className="text-5xl mb-4 opacity-30">🛒</span>
                   <p className="text-[15px] text-[var(--ink-soft)] mb-1">购物车是空的</p>
                   <p className="text-[13px] text-[var(--ink-muted)]">快去逛逛吧~</p>
-                  <motion.button whileTap={{ scale: 0.95 }} onClick={() => setCartOpen(false)}
+                  <button onClick={() => setCartOpen(false)}
                     className="mt-6 px-6 py-3 rounded-2xl text-white text-[15px] font-semibold cursor-pointer"
-                    style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 4px 20px rgba(232,145,158,0.3)' }}>去逛逛</motion.button>
+                    style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 4px 20px rgba(232,145,158,0.3)' }}>去逛逛</button>
                 </div>
               ) : (
                 <>
-                  <div className="flex-1 overflow-y-auto px-5 space-y-2.5" style={{ minHeight: 0 }}>
+                  {/* 商品列表 — 绝对定位，可滚动 */}
+                  <div className="absolute top-[80px] bottom-[120px] left-0 right-0 overflow-y-auto px-5 space-y-2.5"
+                    style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.12) transparent', WebkitOverflowScrolling: 'touch' }}>
                     {cart.map(ci => (
-                      <div key={ci.item.id} className="flex items-center gap-3 p-3.5 rounded-2xl relative z-[2]"
+                      <div key={ci.item.id} className="flex items-center gap-3 p-3.5 rounded-2xl"
                         style={{ background: 'rgba(251,240,242,0.5)', border: '0.5px solid rgba(232,145,158,0.1)' }}>
                         <span className="text-2xl flex-shrink-0">{ci.item.emoji}</span>
                         <div className="flex-1 min-w-0">
@@ -256,7 +262,9 @@ export default function HomePage() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex-shrink-0 px-5 pt-3 pb-4 space-y-3" style={{ borderTop: '0.5px solid rgba(0,0,0,0.04)' }}>
+                  {/* 底部操作栏 — 固定 */}
+                  <div className="absolute bottom-0 left-0 right-0 px-5 pt-3 pb-4 space-y-3"
+                    style={{ background: 'rgba(255,250,251,0.85)', backdropFilter: 'blur(44px) saturate(200%)', WebkitBackdropFilter: 'blur(44px) saturate(200%)', borderTop: '0.5px solid rgba(0,0,0,0.04)' }}>
                     <div className="flex items-center justify-between">
                       <span className="text-[14px] text-[var(--ink-soft)] font-medium">共 {cartCount} 件商品</span>
                       <button onClick={() => { setCart([]); addToast('已清空', 'info') }}
