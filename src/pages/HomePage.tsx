@@ -112,12 +112,12 @@ export default function HomePage() {
           })}
         </div>
 
-        {/* RIGHT: Items — absolute定位，彻底解决滚动问题 */}
-        <div className="flex-1 relative min-w-0" style={{ background: 'var(--color-bg)' }}>
-          {/* Category header */}
+        {/* RIGHT: Items — 整体滚动，sticky header，最可靠方案 */}
+        <div className="flex-1 min-w-0 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,123,156,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
+          {/* Category header — sticky */}
           {category && (
-            <div className="absolute top-0 left-0 right-0 z-10 px-4 py-3 flex items-center gap-2.5" style={{
-              background: 'rgba(255,255,255,0.4)',
+            <div className="sticky top-0 z-10 px-4 py-3 flex items-center gap-2.5" style={{
+              background: 'rgba(255,245,248,0.9)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
               borderBottom: '1px solid rgba(255,255,255,0.5)',
@@ -128,9 +128,8 @@ export default function HomePage() {
             </div>
           )}
 
-          {/* Item list — 绝对定位，永远可滚动到底 */}
-          <div className="absolute top-[49px] bottom-0 left-0 right-0 overflow-y-auto px-3 py-3 space-y-2.5 pb-20"
-            style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,123,156,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
+          {/* Item list */}
+          <div className="px-3 py-3 space-y-2.5" style={{ paddingBottom: '120px' }}>
             {items.map(item => (
               <div key={item.id} className="food-card p-3">
                 <div className="flex items-center gap-3 relative z-[2]">
