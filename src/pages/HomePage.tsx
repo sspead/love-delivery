@@ -52,17 +52,36 @@ export default function HomePage() {
 
   return (
     <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(180deg, #FFFAFB 0%, #FBF0F2 40%, #F8ECEF 100%)' }}>
-      {/* Banner · 玫瑰金渐变 */}
-      <div className="flex-shrink-0 relative px-5 pt-4 pb-5 overflow-hidden">
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(245,197,206,0.35) 0%, rgba(251,240,242,0.2) 50%, transparent 100%)' }} />
-        <div className="absolute -top-12 -right-12 w-44 h-44 rounded-full opacity-6" style={{ background: 'radial-gradient(circle, #E8919E, transparent 70%)' }} />
-        <div className="absolute top-8 right-12 w-12 h-12 rounded-full opacity-4" style={{ background: 'radial-gradient(circle, #D4A853, transparent 60%)' }} />
-        <div className="relative z-10 flex items-end justify-between">
-          <div>
-            <h1 className="crystal-text text-[28px] leading-none" style={{ color: 'var(--rose-deep)' }}>恋爱外卖</h1>
-            <p className="text-[13px] text-[var(--ink-soft)] flex items-center gap-1.5 mt-1.5 tracking-wide">
-              <Sparkles size={12} style={{ color: 'var(--gold)' }} /> 甜蜜下单 · 专属送达
+      {/* Banner · 高级质感头部 */}
+      <div className="flex-shrink-0 relative px-5 pt-5 pb-6 overflow-hidden">
+        {/* 多层渐变底色 */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(160deg, rgba(245,197,206,0.5) 0%, rgba(251,240,242,0.35) 30%, rgba(255,250,251,0.15) 60%, rgba(240,168,168,0.08) 100%)',
+        }} />
+        {/* 装饰光晕 */}
+        <div className="absolute -top-20 -left-16 w-60 h-60 rounded-full" style={{ background: 'radial-gradient(circle, rgba(232,145,158,0.18) 0%, transparent 70%)' }} />
+        <div className="absolute top-4 right-10 w-32 h-32 rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,168,83,0.12) 0%, transparent 60%)' }} />
+        <div className="absolute -bottom-8 right-0 w-24 h-24 rounded-full" style={{ background: 'radial-gradient(circle, rgba(232,145,158,0.1) 0%, transparent 50%)' }} />
+        {/* 装饰线条 */}
+        <div className="absolute bottom-3 left-5 right-5 h-[0.5px]" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(232,145,158,0.25) 20%, rgba(212,168,83,0.2) 50%, rgba(232,145,158,0.25) 80%, transparent 100%)' }} />
+        {/* 微点纹理 */}
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(circle, #D47888 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        {/* 内容 */}
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[22px]">🛵</span>
+            <h1 className="crystal-text text-[30px] leading-none tracking-wider" style={{ color: 'var(--rose-deep)' }}>恋爱外卖</h1>
+          </div>
+          <div className="flex items-center gap-3">
+            <p className="text-[14px] text-[var(--ink-soft)] font-medium tracking-[0.08em]">
+              甜蜜下单 · 专属送达
             </p>
+            <div className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--rose-light)' }} />
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--gold)' }} />
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--rose-light)' }} />
+            </div>
           </div>
         </div>
       </div>
