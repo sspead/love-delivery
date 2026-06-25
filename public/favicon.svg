@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B8A"/>
+      <stop offset="100%" style="stop-color:#FF4470"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Heart shape -->
+  <path d="M50 88 C18 62 4 46 4 28 A19 19 0 0 1 38 20 C42 24 47 28 50 35 C53 28 58 24 62 20 A19 19 0 0 1 96 28 C96 46 82 62 50 88Z"
+        fill="url(#heartGrad)" filter="url(#glow)"/>
+  <!-- Subtle highlight -->
+  <path d="M50 80 Q55 65 62 50 Q50 42 38 32 Q30 45 38 60 C42 70 46 76 50 80Z"
+        fill="rgba(255,255,255,0.3)"/>
+</svg>

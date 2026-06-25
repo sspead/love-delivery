@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   恋爱外卖 — Love Delivery
+   水晶3D立体文字 · 淡粉背景 · 外卖点单风格
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --color-primary: #FF7B9C;
+  --color-primary-dark: #E8668A;
+  --color-primary-light: #FFB8CD;
+  --color-accent: #FFA940;
+  --color-bg: #FFF0F4;
+  --color-bg-card: #FFFFFF;
+  --color-text: #3D2647;
+  --color-text-soft: #6B5B6E;
+  --color-text-muted: #A090A3;
+  --color-success: #52C41A;
+  --color-heart: #FF4470;
+  --color-tag: #FFF5F8;
+
+  --font-display: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
+  --font-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@theme inline {
+  --color-primary: #FF7B9C;
+  --color-primary-dark: #E8668A;
+  --color-primary-light: #FFB8CD;
+  --color-accent: #FFA940;
+  --color-bg: #FFF0F4;
+  --color-text: #3D2647;
+  --color-text-soft: #6B5B6E;
+  --color-text-muted: #A090A3;
+  --color-success: #52C41A;
+  --color-heart: #FF4470;
+  --font-display: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
+  --font-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════
+   Base
+   ═══════════════════════════════════════════════ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+body { min-height: 100dvh; overflow-x: hidden; background: var(--color-bg); }
+#root { min-height: 100dvh; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-primary-light); border-radius: 3px; }
+
+/* ═══════════════════════════════════════════════
+   ★ 水晶3D立体文字效果 — Crystal 3D Text ★
+   ═══════════════════════════════════════════════ */
+
+.crystal-text {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  /* 多层立体阴影制造裸眼3D水晶效果 */
+  text-shadow:
+    0 0 10px rgba(255,123,156,0.4),
+    0 1px 0 rgba(255,255,255,0.7),
+    0 2px 0 rgba(255,200,210,0.4),
+    0 3px 0 rgba(255,150,180,0.25),
+    0 4px 8px rgba(200,100,130,0.15),
+    0 6px 16px rgba(0,0,0,0.06);
+  -webkit-text-stroke: 0.4px rgba(255,255,255,0.25);
+  paint-order: stroke fill;
+}
+
+.crystal-text-sm {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 0 6px rgba(255,123,156,0.3),
+    0 1px 0 rgba(255,255,255,0.6),
+    0 2px 0 rgba(255,180,200,0.35),
+    0 3px 6px rgba(0,0,0,0.05);
+  -webkit-text-stroke: 0.3px rgba(255,255,255,0.2);
+  paint-order: stroke fill;
+}
+
+.crystal-text-white {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.5),
+    0 2px 0 rgba(255,200,210,0.3),
+    0 3px 6px rgba(0,0,0,0.08);
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.4);
+  paint-order: stroke fill;
+}
+
+/* ═══════════════════════════════════════════════
+   Animations
+   ═══════════════════════════════════════════════ */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulseGlow {
+  0%,100% { box-shadow: 0 0 8px rgba(255,123,156,0.3); }
+  50% { box-shadow: 0 0 20px rgba(255,123,156,0.6); }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+@keyframes cartBounce {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+.animate-float-up { animation: floatUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-scale-in { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
+.animate-cart-bounce { animation: cartBounce 0.4s ease-in-out; }
+.animate-shimmer { background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%); background-size: 200% 100%; animation: shimmer 2s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════════
+   Card styles — 外卖商品卡片
+   ═══════════════════════════════════════════════ */
+.food-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
+  border: 1px solid rgba(255,123,156,0.06);
+  transition: all 0.2s ease;
+}
+.food-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 16px rgba(255,123,156,0.1);
+}
+
+/* ═══════════════════════════════════════════════
+   Category pills — 分类横滑胶囊
+   ═══════════════════════════════════════════════ */
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  background: #FFFFFF;
+  color: var(--color-text-soft);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  border: 1.5px solid transparent;
+}
+.category-pill.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(255,123,156,0.3);
+  border-color: transparent;
+}
+
+/* ═══════════════════════════════════════════════
+   Order status badges
+   ═══════════════════════════════════════════════ */
+.order-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.order-badge.pending { background: #FFF7E6; color: #FA8C16; }
+.order-badge.accepted { background: #E6F7FF; color: #1890FF; }
+.order-badge.done { background: #F0FFF4; color: #52C41A; }
+
+/* ═══════════════════════════════════════════════
+   Safe area
+   ═══════════════════════════════════════════════ */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+
+/* ═══════════════════════════════════════════════
+   Prevent text overlap
+   ═══════════════════════════════════════════════ */
+.break-word { word-break: break-word; overflow-wrap: break-word; }
+.no-overlap { overflow: hidden; text-overflow: ellipsis; }
