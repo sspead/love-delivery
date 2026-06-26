@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Plus, Minus, X, Sparkles } from 'lucide-react'
 import { useCoupleStore } from '../stores/coupleStore'
@@ -200,10 +201,11 @@ export default function HomePage() {
         )}
       </motion.button>
 
-      {/* Cart Sheet */}
-      <AnimatePresence>
-        {cartOpen && (
-          <div className="fixed inset-0 z-50 flex items-end justify-center">
+      {/* Cart Sheet — Portal 到 body，彻底避开层叠上下文 */}
+      {createPortal(
+        <AnimatePresence>
+          {cartOpen && (
+            <div className="fixed inset-0 z-[999] flex items-end justify-center">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setCartOpen(false)} className="absolute inset-0 bg-black/25 backdrop-blur-sm" />
             <motion.div
@@ -295,7 +297,9 @@ export default function HomePage() {
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+        document.body
+      )}
     </div>
   )
 }
