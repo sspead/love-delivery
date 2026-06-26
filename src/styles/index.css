@@ -1,201 +1,149 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════
-   恋爱外卖 · Premium Design System
-   玫瑰金 · 磨砂玻璃 · 精雕质感
+   一二布布 · 治愈萌系主题
+   奶茶色系 · 软萌圆润 · 暖暖的
    ═══════════════════════════════════════════════ */
 
 :root {
-  --rose: #E8919E;
-  --rose-deep: #D47888;
-  --rose-light: #F5C5CE;
-  --blush: #FBF0F2;
-  --cream: #FFFAFB;
-  --gold: #D4A853;
-  --gold-light: #F0DFB6;
-  --ink: #2D2427;
-  --ink-soft: #5C5256;
-  --ink-muted: #999094;
-  --mint: #8CBF9E;
-  --coral: #F0A0A8;
-
-  --font-display: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
-  --font-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
+  --milk-tea: #C4956A;
+  --milk-tea-deep: #A07850;
+  --milk-tea-light: #E8D5C0;
+  --cream: #FFF8F0;
+  --cream-warm: #FDF5EC;
+  --blush: #F0C8C8;
+  --blush-light: #FDE8E8;
+  --ink: #4A3030;
+  --ink-soft: #7A6060;
+  --ink-muted: #B0A0A0;
+  --mint: #B8D8C8;
+  --honey: #E8C878;
 }
 
 @theme inline {
-  --color-rose: #E8919E;
-  --color-rose-deep: #D47888;
-  --color-rose-light: #F5C5CE;
-  --color-blush: #FBF0F2;
-  --color-cream: #FFFAFB;
-  --color-gold: #D4A853;
-  --color-ink: #2D2427;
-  --color-ink-soft: #5C5256;
-  --color-ink-muted: #999094;
-  --color-mint: #8CBF9E;
-  --color-coral: #F0A0A8;
+  --color-milk-tea: #C4956A;
+  --color-milk-tea-deep: #A07850;
+  --color-milk-tea-light: #E8D5C0;
+  --color-cream: #FFF8F0;
+  --color-cream-warm: #FDF5EC;
+  --color-blush: #F0C8C8;
+  --color-blush-light: #FDE8E8;
+  --color-ink: #4A3030;
+  --color-ink-soft: #7A6060;
+  --color-ink-muted: #B0A0A0;
+  --color-mint: #B8D8C8;
+  --color-honey: #E8C878;
   --font-display: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
   --font-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
 }
 
-/* Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html {
-  font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--cream);
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-body); color: var(--ink);
+  background: var(--cream-warm); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
 }
-body { min-height: 100dvh; overflow-x: hidden; background: var(--cream); }
+body { min-height: 100dvh; overflow-x: hidden; background: var(--cream-warm); }
 #root { min-height: 100dvh; }
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 2px; }
 
-/* ═══════════════════════════════════════════════
-   Crystal 3D Text · 精雕水晶字
-   ═══════════════════════════════════════════════ */
+/* 水晶文字 — 奶茶色版 */
 .crystal-text {
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-weight: 800; letter-spacing: 0.04em;
   text-shadow:
-    0 0 20px rgba(232,145,158,0.25),
+    0 0 16px rgba(196,149,106,0.3),
     0 1px 0 rgba(255,255,255,0.9),
-    0 2px 0 rgba(245,197,206,0.5),
-    0 3px 1px rgba(212,120,136,0.25),
-    0 4px 2px rgba(200,120,140,0.12),
+    0 2px 0 rgba(232,213,192,0.5),
+    0 3px 1px rgba(160,120,80,0.25),
+    0 4px 2px rgba(140,100,70,0.12),
     0 6px 12px rgba(0,0,0,0.04);
   -webkit-text-stroke: 0.5px rgba(255,255,255,0.4);
   paint-order: stroke fill;
 }
-
 .crystal-text-sm {
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: 700; letter-spacing: 0.03em;
   text-shadow:
-    0 0 10px rgba(232,145,158,0.2),
+    0 0 10px rgba(196,149,106,0.2),
     0 1px 0 rgba(255,255,255,0.8),
-    0 2px 0 rgba(245,197,206,0.4),
-    0 3px 4px rgba(180,120,140,0.08);
+    0 2px 0 rgba(232,213,192,0.4),
+    0 3px 4px rgba(140,100,70,0.08);
   -webkit-text-stroke: 0.3px rgba(255,255,255,0.35);
   paint-order: stroke fill;
 }
 
-/* ═══════════════════════════════════════════════
-   Premium Card · 高级质感卡片
-   ═══════════════════════════════════════════════ */
+/* 萌系卡片 — 圆圆软软 */
 .card-premium {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(28px) saturate(170%);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
-  border-radius: 20px;
-  border: 0.5px solid rgba(255, 255, 255, 0.8);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.02),
-    0 4px 16px rgba(200,150,160,0.06),
-    0 12px 40px rgba(200,150,160,0.04);
-  position: relative;
-  overflow: hidden;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-radius: 22px;
+  border: 1px solid rgba(232,213,192,0.3);
+  box-shadow: 0 2px 4px rgba(180,150,120,0.06), 0 6px 16px rgba(180,150,120,0.08);
+  position: relative; overflow: hidden;
 }
-
 .card-premium::before {
-  content: '';
-  position: absolute;
-  top: 1px; left: 10%; right: 10%; height: 35%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
-  border-radius: 0 0 60% 60%;
-  pointer-events: none;
-  z-index: 1;
+  content: ''; position: absolute;
+  top: 2px; left: 10%; right: 10%; height: 30%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%);
+  border-radius: 0 0 50% 50%; pointer-events: none; z-index: 1;
 }
+.card-premium:active { transform: scale(0.985); }
 
-.card-premium:active {
-  transform: scale(0.985);
-  box-shadow: 0 2px 8px rgba(200,150,160,0.08);
-}
-
-/* ═══════════════════════════════════════════════
-   Panel · 磨砂玻璃面板
-   ═══════════════════════════════════════════════ */
+/* 面板 */
 .panel-glass {
-  background: rgba(255, 250, 251, 0.75);
-  backdrop-filter: blur(28px) saturate(170%);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
-  border: 0.5px solid rgba(200, 170, 180, 0.2);
-  box-shadow: 0 2px 16px rgba(180,140,150,0.08), 0 1px 0 rgba(255,255,255,0.5) inset;
+  background: rgba(255,248,240,0.7);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid rgba(232,213,192,0.25);
+  box-shadow: 0 2px 12px rgba(180,150,120,0.06);
 }
 
-/* ═══════════════════════════════════════════════
-   Status Badges
-   ═══════════════════════════════════════════════ */
+/* 徽章 */
 .order-badge {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 4px 12px; border-radius: 12px;
-  font-size: 12px; font-weight: 600;
-  backdrop-filter: blur(8px);
+  padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;
 }
-.order-badge.pending { background: rgba(255, 245, 235, 0.85); color: #C77D20; }
-.order-badge.accepted { background: rgba(235, 245, 255, 0.85); color: #3B82C4; }
-.order-badge.done { background: rgba(240, 252, 244, 0.85); color: #3B8250; }
+.order-badge.pending { background: rgba(255,245,235,0.85); color: #C4956A; }
+.order-badge.accepted { background: rgba(235,245,240,0.85); color: #6AAA88; }
+.order-badge.done { background: rgba(240,252,244,0.85); color: #5A9A72; }
 
-/* ═══════════════════════════════════════════════
-   Animations
-   ═══════════════════════════════════════════════ */
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-@keyframes floatUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes confetti-fall {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-}
+/* 动画 */
+@keyframes floatUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes wiggle { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } }
+@keyframes confetti-fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
 
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmer 2.5s ease-in-out infinite;
-}
 .animate-float-up { animation: floatUp 0.5s ease-out forwards; }
 .animate-scale-in { animation: scaleIn 0.35s ease-out forwards; }
+.animate-bounce-slow { animation: bounce 2s ease-in-out infinite; }
+.animate-wiggle { animation: wiggle 0.5s ease-in-out; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  background-size: 200% 100%; animation: shimmer 2.5s ease-in-out infinite;
+}
 
-/* ═══════════════════════════════════════════════
-   Safe Area
-   ═══════════════════════════════════════════════ */
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 .safe-top { padding-top: env(safe-area-inset-top, 0px); }
-
-/* ═══════════════════════════════════════════════
-   Text Safety
-   ═══════════════════════════════════════════════ */
 .break-word { word-break: break-word; overflow-wrap: break-word; }
 .no-overlap { overflow: hidden; text-overflow: ellipsis; }
 
-/* Legacy — food-card maps to card-premium */
+/* 萌系卡片别名 */
 .food-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border-radius: 18px;
-  border: 1px solid rgba(200, 170, 180, 0.25);
-  box-shadow:
-    0 2px 4px rgba(180,140,150,0.08),
-    0 6px 20px rgba(180,140,150,0.1),
-    0 2px 0 rgba(255,255,255,0.6) inset;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-radius: 22px;
+  border: 1px solid rgba(232,213,192,0.3);
+  box-shadow: 0 2px 4px rgba(180,150,120,0.06), 0 6px 16px rgba(180,150,120,0.08);
   position: relative; overflow: hidden;
 }
 .food-card::before {
   content: ''; position: absolute;
-  top: 2px; left: 8%; right: 8%; height: 30%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.05) 100%);
+  top: 2px; left: 10%; right: 10%; height: 30%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%);
   border-radius: 0 0 50% 50%; pointer-events: none; z-index: 1;
 }
-.food-card:active { transform: scale(0.985); box-shadow: 0 2px 6px rgba(180,140,150,0.12); }
+.food-card:active { transform: scale(0.985); }

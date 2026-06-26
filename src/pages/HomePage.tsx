@@ -52,36 +52,35 @@ export default function HomePage() {
   }, [cart, uid, uname, pid, pname, addToast])
 
   return (
-    <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(180deg, #FFFAFB 0%, #FBF0F2 40%, #F8ECEF 100%)' }}>
-      {/* Banner · 高级质感头部 */}
+    <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(180deg, #FFF8F0 0%, #FDF5EC 40%, #FBF0E8 100%)' }}>
+      {/* Banner · 一二布布萌系头部 */}
       <div className="flex-shrink-0 relative px-5 pt-5 pb-6 overflow-hidden">
-        {/* 多层渐变底色 */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(160deg, rgba(245,197,206,0.5) 0%, rgba(251,240,242,0.35) 30%, rgba(255,250,251,0.15) 60%, rgba(240,168,168,0.08) 100%)',
+          background: 'linear-gradient(160deg, rgba(232,213,192,0.5) 0%, rgba(253,245,236,0.35) 30%, rgba(255,248,240,0.15) 60%, rgba(240,200,200,0.08) 100%)',
         }} />
-        {/* 装饰光晕 */}
-        <div className="absolute -top-20 -left-16 w-60 h-60 rounded-full" style={{ background: 'radial-gradient(circle, rgba(232,145,158,0.18) 0%, transparent 70%)' }} />
-        <div className="absolute top-4 right-10 w-32 h-32 rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,168,83,0.12) 0%, transparent 60%)' }} />
-        <div className="absolute -bottom-8 right-0 w-24 h-24 rounded-full" style={{ background: 'radial-gradient(circle, rgba(232,145,158,0.1) 0%, transparent 50%)' }} />
+        <div className="absolute -top-16 -left-12 w-56 h-56 rounded-full" style={{ background: 'radial-gradient(circle, rgba(196,149,106,0.15) 0%, transparent 70%)' }} />
+        <div className="absolute top-6 right-8 w-28 h-28 rounded-full" style={{ background: 'radial-gradient(circle, rgba(232,200,120,0.12) 0%, transparent 60%)' }} />
+        <div className="absolute -bottom-6 right-20 w-20 h-20 rounded-full" style={{ background: 'radial-gradient(circle, rgba(240,200,200,0.15) 0%, transparent 50%)' }} />
+        <div className="absolute -bottom-8 right-0 w-24 h-24 rounded-full" style={{ background: 'radial-gradient(circle, rgba(196,149,106,0.1) 0%, transparent 50%)' }} />
         {/* 装饰线条 */}
-        <div className="absolute bottom-3 left-5 right-5 h-[0.5px]" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(232,145,158,0.25) 20%, rgba(212,168,83,0.2) 50%, rgba(232,145,158,0.25) 80%, transparent 100%)' }} />
+        <div className="absolute bottom-3 left-5 right-5 h-[0.5px]" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(196,149,106,0.25) 20%, rgba(212,168,83,0.2) 50%, rgba(196,149,106,0.25) 80%, transparent 100%)' }} />
         {/* 微点纹理 */}
         <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'radial-gradient(circle, #D47888 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, #A07850 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
         {/* 内容 */}
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[22px]">🛵</span>
-            <h1 className="crystal-text text-[30px] leading-none tracking-wider" style={{ color: 'var(--rose-deep)' }}>恋爱外卖</h1>
+            <span className="text-[26px] animate-bounce-slow">🐻</span>
+            <h1 className="crystal-text text-[30px] leading-none tracking-wider" style={{ color: 'var(--milk-tea-deep)' }}>恋爱外卖</h1>
           </div>
           <div className="flex items-center gap-3">
             <p className="text-[14px] text-[var(--ink-soft)] font-medium tracking-[0.08em]">
               甜蜜下单 · 专属送达
             </p>
-            <div className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--rose-light)' }} />
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--gold)' }} />
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--rose-light)' }} />
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full" style={{ background: 'var(--milk-tea-light)' }} />
+              <span className="w-2 h-2 rounded-full animate-bounce-slow" style={{ background: 'var(--honey)', animationDelay: '0.3s' }} />
+              <span className="w-2 h-2 rounded-full" style={{ background: 'var(--blush)' }} />
             </div>
           </div>
         </div>
@@ -99,14 +98,14 @@ export default function HomePage() {
                 className="flex flex-col items-center justify-center gap-1.5 py-3.5 px-1 w-full cursor-pointer relative"
                 style={{
                   background: isActive
-                    ? 'linear-gradient(180deg, rgba(232,145,158,0.2) 0%, rgba(245,197,206,0.1) 100%)'
+                    ? 'linear-gradient(180deg, rgba(196,149,106,0.2) 0%, rgba(245,197,206,0.1) 100%)'
                     : 'linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,250,251,0.3) 100%)',
                   borderBottom: '0.5px solid rgba(200,170,180,0.12)',
                   minHeight: 68 }}
               >
                 {isActive && (
                   <motion.div layoutId="activeBar" className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full"
-                    style={{ background: 'linear-gradient(180deg, #E8919E, #D47888)', boxShadow: '0 0 6px rgba(232,145,158,0.3)' }}
+                    style={{ background: 'linear-gradient(180deg, #C4956A, #A07850)', boxShadow: '0 0 6px rgba(196,149,106,0.3)' }}
                     transition={{ type: 'spring', stiffness: 400, damping: 28 }} />
                 )}
                 <span className="text-xl leading-none" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.06))' }}>{cat.emoji}</span>
@@ -122,7 +121,7 @@ export default function HomePage() {
         {/* RIGHT · 商品列表 + 购物车按钮 */}
         <div className="absolute top-0 left-[80px] bottom-0 right-0" style={{ background: 'rgba(255,250,251,0.3)' }}>
           {/* 可滚动商品区域 */}
-          <div className="h-full overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
+          <div className="h-full overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(196,149,106,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
             {category && (
               <div className="sticky top-0 z-10 px-5 py-3.5 flex items-center gap-3" style={{
                 background: 'rgba(255,250,251,0.85)',
@@ -148,18 +147,18 @@ export default function HomePage() {
                         <span className="font-bold text-[16px] text-[var(--ink)] line-clamp-1 break-word tracking-tight">{item.name}</span>
                         {item.tag && (
                           <span className="flex-shrink-0 px-2 py-[3px] rounded-full text-[10px] font-bold tracking-wide"
-                            style={{ background: 'linear-gradient(135deg, rgba(232,145,158,0.12), rgba(245,197,206,0.08))', color: 'var(--rose)' }}>{item.tag}</span>
+                            style={{ background: 'linear-gradient(135deg, rgba(196,149,106,0.12), rgba(245,197,206,0.08))', color: 'var(--milk-tea)' }}>{item.tag}</span>
                         )}
                       </div>
                       <p className="text-[13px] text-[var(--ink-soft)] line-clamp-2 break-word leading-relaxed mb-2.5">{item.desc}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-[15px] font-extrabold tracking-tight" style={{ color: 'var(--rose)' }}>
+                        <span className="text-[15px] font-extrabold tracking-tight" style={{ color: 'var(--milk-tea)' }}>
                           {item.price} <span className="text-[11px] font-semibold text-[var(--ink-muted)]">爱点</span>
                         </span>
                         <motion.button whileTap={{ scale: 0.88 }}
                           onClick={() => addToCart(item)}
                           className="w-9 h-9 rounded-xl flex items-center justify-center cursor-pointer flex-shrink-0"
-                          style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 3px 14px rgba(232,145,158,0.35)' }}>
+                          style={{ background: 'linear-gradient(135deg, #C4956A, #A07850)', boxShadow: '0 3px 14px rgba(196,149,106,0.35)' }}>
                           <Plus size={18} style={{ color: '#fff' }} strokeWidth={2.5} />
                         </motion.button>
                       </div>
@@ -185,8 +184,8 @@ export default function HomePage() {
         onClick={() => setCartOpen(true)}
         className="fixed bottom-20 left-4 right-4 z-40 flex items-center justify-center gap-3 h-[52px] rounded-[18px] cursor-pointer overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #E8919E, #D47888)',
-          boxShadow: '0 6px 28px rgba(232,145,158,0.45)',
+          background: 'linear-gradient(135deg, #C4956A, #A07850)',
+          boxShadow: '0 6px 28px rgba(196,149,106,0.45)',
         }}>
         <ShoppingBag size={20} style={{ color: '#fff' }} strokeWidth={1.5} />
         <span className="text-[15px] font-bold text-white tracking-wide">购物车</span>
@@ -225,7 +224,7 @@ export default function HomePage() {
               {/* 标题栏 */}
               <div className="flex-shrink-0 px-5 pt-2 pb-3 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <ShoppingBag size={20} style={{ color: 'var(--rose)' }} strokeWidth={1.5} />
+                  <ShoppingBag size={20} style={{ color: 'var(--milk-tea)' }} strokeWidth={1.5} />
                   <h3 className="crystal-text-sm text-lg" style={{ color: 'var(--ink)' }}>购物车</h3>
                   <span className="text-sm text-[var(--ink-muted)] font-medium">{cartCount} 件</span>
                 </div>
@@ -242,13 +241,13 @@ export default function HomePage() {
                   <p className="text-[13px] text-[var(--ink-muted)]">快去逛逛吧~</p>
                   <button onClick={() => setCartOpen(false)}
                     className="mt-6 px-6 py-3 rounded-2xl text-white text-[15px] font-semibold cursor-pointer"
-                    style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 4px 20px rgba(232,145,158,0.3)' }}>去逛逛</button>
+                    style={{ background: 'linear-gradient(135deg, #C4956A, #A07850)', boxShadow: '0 4px 20px rgba(196,149,106,0.3)' }}>去逛逛</button>
                 </div>
               ) : (
                 <>
                   {/* 商品列表 — flex-1 自动填满剩余空间 */}
                   <div className="flex-1 min-h-0 overflow-y-auto px-5 space-y-3"
-                    style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(232,145,158,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
+                    style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(196,149,106,0.15) transparent', WebkitOverflowScrolling: 'touch' }}>
                     {cart.map(ci => (
                       <div key={ci.item.id} className="food-card p-3.5 !rounded-2xl">
                         <div className="flex items-center gap-3.5 relative z-[2]">
@@ -258,18 +257,18 @@ export default function HomePage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-[15px] font-bold text-[var(--ink)] line-clamp-1 break-word">{ci.item.name}</p>
-                            <p className="text-[13px] mt-0.5 font-semibold" style={{ color: 'var(--rose)' }}>{ci.item.price} 爱点 × {ci.quantity}</p>
+                            <p className="text-[13px] mt-0.5 font-semibold" style={{ color: 'var(--milk-tea)' }}>{ci.item.price} 爱点 × {ci.quantity}</p>
                           </div>
                           <div className="flex items-center gap-2 flex-shrink-0">
                             <motion.button whileTap={{ scale: 0.85 }} onClick={() => removeFromCart(ci.item.id)}
                               className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
-                              style={{ background: 'rgba(232,145,158,0.1)', border: '1px solid rgba(232,145,158,0.15)' }}>
+                              style={{ background: 'rgba(196,149,106,0.1)', border: '1px solid rgba(196,149,106,0.15)' }}>
                               <Minus size={14} style={{ color: 'var(--rose-deep)' }} strokeWidth={2.5} />
                             </motion.button>
                             <span className="text-[15px] font-bold text-[var(--ink)] w-6 text-center">{ci.quantity}</span>
                             <motion.button whileTap={{ scale: 0.85 }} onClick={() => addToCart(ci.item)}
                               className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
-                              style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 2px 8px rgba(232,145,158,0.3)' }}>
+                              style={{ background: 'linear-gradient(135deg, #C4956A, #A07850)', boxShadow: '0 2px 8px rgba(196,149,106,0.3)' }}>
                               <Plus size={14} style={{ color: '#fff' }} strokeWidth={2.5} />
                             </motion.button>
                           </div>
@@ -283,11 +282,11 @@ export default function HomePage() {
                     <div className="flex items-center justify-between">
                       <span className="text-[14px] text-[var(--ink-soft)] font-semibold">共 {cartCount} 件商品</span>
                       <button onClick={() => { setCart([]); addToast('购物车已清空', 'info') }}
-                        className="text-[14px] text-[var(--ink-muted)] cursor-pointer font-medium hover:text-[var(--rose)] transition-colors">清空购物车</button>
+                        className="text-[14px] text-[var(--ink-muted)] cursor-pointer font-medium hover:text-[var(--milk-tea)] transition-colors">清空购物车</button>
                     </div>
                     <motion.button whileTap={{ scale: 0.97 }} onClick={submitOrder}
                       className="w-full py-4 rounded-2xl text-white text-[17px] font-bold cursor-pointer flex items-center justify-center gap-2 tracking-wider"
-                      style={{ background: 'linear-gradient(135deg, #E8919E, #D47888)', boxShadow: '0 6px 28px rgba(232,145,158,0.4)' }}>
+                      style={{ background: 'linear-gradient(135deg, #C4956A, #A07850)', boxShadow: '0 6px 28px rgba(196,149,106,0.4)' }}>
                       <span>提交订单</span><span className="text-xl">💝</span>
                     </motion.button>
                     <p className="text-center text-[12px] text-[var(--ink-muted)]">TA会收到你的甜蜜下单通知 ✨</p>
